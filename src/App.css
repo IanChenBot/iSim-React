@@ -6,15 +6,17 @@
 
 #grid{
     display: grid;
+    position: relative;
+    margin-bottom: 200px;
 }
 
 .power{
-    background: radial-gradient(#ffffff,#ff0000);
+    position: absolute;
     border-radius: 100%;
     height:15px;
     width:15px;
-    margin-top: 17.5%;
-    margin-left:10%;
+    left:80px;
+    top: 190px;
 }
 
 .scale{

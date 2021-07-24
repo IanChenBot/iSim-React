@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef} from "react";
 import "./App.css";
 
 import scale from "./assets/radaltback.png";
@@ -20,6 +20,26 @@ function App() {
       return 180+(90/1000)*(value-500)
     }
   }
+
+
+  let buttonStyle;
+  if(bug>=altitude && power==true){
+    buttonStyle={ 
+      background: 'radial-gradient(#ffffff,#ff0000)',
+    }
+  }else{
+    buttonStyle ={
+      background: 'red'
+    }
+  }
+
+  let currentAltitude;
+  if(power){
+    currentAltitude=altitude;
+  }
+
+  
+  
   
   
   
@@ -29,22 +49,23 @@ function App() {
       <div id="grid">
         <img src={scale} className="overlap"  />
         <img src={cover} className="overlap" />
-        <img src={needle} className="overlap" style={{transform:`rotate(${valueToDegree(altitude)}deg)`}} />
+        <img src={needle} className="overlap" style={{transform:`rotate(${valueToDegree(currentAltitude)}deg)`}} />
         <img src={bugImg} className="overlap" style={{transform:`rotate(${valueToDegree(bug)}deg)`}}  />
         <img src={flagImg} className="overlap" hidden={power}/>
-        <div className="overlap power" hidden={!power}> </div>
+        <div className="overlap power" hidden={!power} style={buttonStyle}> </div>
       </div>
       <div>
         <label htmlFor="altitude"> Altitude: </label>
-        <input type="range" id="altitude" min="0" max="1500" disabled={!power} onChange={(e)=>{
-          setAltitude(e.target.value)
+        <input type="range" id="altitude" min="0" max="1500" onChange={(e)=>{
+            setAltitude(parseInt(e.target.value))
+          
         }} />
         <span> {altitude}</span>
       </div>
       <div>
         <label htmlFor="bug"> Bug:</label>
         <input type="range" id="bug" min="0" max="1500" onChange={(e)=>{
-          setBug(e.target.value)}}/>
+          setBug(parseInt(e.target.value))}}/>
         <span> {bug}</span>
       </div>
       <div>
