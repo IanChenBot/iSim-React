@@ -1,0 +1,22 @@
+
+.overlap{
+    grid-row: 1/1;
+    grid-column: 1/1;
+}
+
+#grid{
+    display: grid;
+}
+
+.power{
+    background: radial-gradient(#ffffff,#ff0000);
+    border-radius: 100%;
+    height:15px;
+    width:15px;
+    margin-top: 17.5%;
+    margin-left:10%;
+}
+
+.scale{
+    transform: rotate(60deg);
+}
